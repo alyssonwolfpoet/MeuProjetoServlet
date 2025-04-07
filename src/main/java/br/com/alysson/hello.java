@@ -1,6 +1,7 @@
 package br.com.alysson;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -37,6 +38,20 @@ public class hello extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		PrintWriter out = response.getWriter();
+		
+		out.println("<html>");
+
+		out.println("<body>");
+
+		out.println("Olá Mundo..");
+
+		out.println("</body>");
+
+		out.println("</html>");
 	}
 
 }
