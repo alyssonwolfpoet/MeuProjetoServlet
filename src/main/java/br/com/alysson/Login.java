@@ -1,7 +1,6 @@
 package br.com.alysson;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -41,8 +40,6 @@ public class Login extends HttpServlet {
 		String nomeUsuario = request.getParameter("usuario");
 		String senhaUsuario = request.getParameter("senha");
 				
-		
-		PrintWriter out = response.getWriter();
 		
 		if (nomeUsuario.equals("admin")  && senhaUsuario.equals("123"))
 		{
