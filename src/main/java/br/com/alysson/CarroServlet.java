@@ -1,25 +1,29 @@
 package br.com.alysson;
 
+import jakarta.servlet.http.HttpServlet;
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import jakarta.servlet.RequestDispatcher;
+import br.com.alysson.beans.Carro;
+import br.com.alysson.utils.BeanUtilities;
+import jakarta.servlet.Servlet;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class CarroServlet
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/CarroServlet")
+public class CarroServlet extends HttpServlet implements Servlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Default constructor.
+	 * @see HttpServlet#HttpServlet()
 	 */
-	public Login() {
+	public CarroServlet() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -31,6 +35,18 @@ public class Login extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+
+		Carro c = new Carro();
+		BeanUtilities.populateBean(c, request);
+
+		out.println("<html><body>");
+		out.println("<h1>Modelo: " + c.getModelo() + "</h1>");
+		out.println("<h1>Marca: " + c.getMarca() + "</h1>");
+		out.println("<h1>Ano: " + c.getAno() + "</h1>");
+		out.println("</body></html>");
 	}
 
 	/**
@@ -40,17 +56,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		doGet(request, response);
-		String nomeUsuario = request.getParameter("usuario");
-		String senhaUsuario = request.getParameter("senha");
-
-		if (nomeUsuario.equals("admin") && senhaUsuario.equals("123")) {
-			request.getSession().setAttribute("usuario", nomeUsuario);
-			response.sendRedirect("email.jsp");
-		} else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("formlogin.html");
-			dispatcher.forward(request, response);
-		}
+		doGet(request, response);
 	}
 
 }

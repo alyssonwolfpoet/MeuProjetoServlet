@@ -1,8 +1,6 @@
 package br.com.alysson;
 
 import java.io.IOException;
-
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,16 +8,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class PagMail
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/PagMail")
+public class PagMail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Default constructor.
+	 * @see HttpServlet#HttpServlet()
 	 */
-	public Login() {
+	public PagMail() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -40,17 +39,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		doGet(request, response);
-		String nomeUsuario = request.getParameter("usuario");
-		String senhaUsuario = request.getParameter("senha");
-
-		if (nomeUsuario.equals("admin") && senhaUsuario.equals("123")) {
-			request.getSession().setAttribute("usuario", nomeUsuario);
-			response.sendRedirect("email.jsp");
-		} else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("formlogin.html");
-			dispatcher.forward(request, response);
-		}
+		doGet(request, response);
 	}
 
 }

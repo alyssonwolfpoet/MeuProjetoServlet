@@ -34,12 +34,17 @@
 	    <scope>provided</scope>
 	</dependency>
 <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-	<dependency>
+	<!--<dependency>
 	    <groupId>javax.servlet</groupId>
 	    <artifactId>javax.servlet-api</artifactId>
 	    <version>4.0.1</version>
 	    <scope>provided</scope>
-	</dependency>
+	</dependency>-->
+	<dependency>
+		<groupId>commons-beanutils</groupId>
+		<artifactId>commons-beanutils</artifactId>
+	<version>1.9.4</version>
+</dependency>
   </dependencies>
 
   <build>
